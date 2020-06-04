@@ -33,6 +33,7 @@ namespace Init_Desktop.Views
             InitializeComponent();
 
             this.template = template;
+            initButton.IsDefault = true;
         }
 
         // handle init new project button
@@ -40,10 +41,15 @@ namespace Init_Desktop.Views
         {
             // get path and name
             string path = FileOperations.getPath();
+            if (path == null) return;
             // if the user does not give a name for the new project than use the template name
             string name = String.IsNullOrEmpty(nameInput.Text) ? template.name : nameInput.Text.Trim();
 
+            LocalEventManager.OnLoading();
+
             await template.SpawnAsync(path, name);
+
+            LocalEventManager.OnDoneLoading();
 
             // reset the name input field and open a new file explorer at the new project location
             nameInput.Text = default(string);

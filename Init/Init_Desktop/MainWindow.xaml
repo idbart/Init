@@ -5,12 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Init_Desktop"
         mc:Ignorable="d"
-        Title="Init" Height="550" Width="1000" ResizeMode="CanMinimize" WindowStyle="None" AllowsTransparency="True">
-    
+        
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{DynamicResource MaterialDesignPaper}"
+        TextElement.FontWeight="Medium"
+        TextElement.FontSize="14"
+        FontFamily="{materialDesign:MaterialDesignFont}"
+        
+        Title="Init" Height="550" Width="1000" ResizeMode="CanMinimize" AllowsTransparency="True" WindowStyle="None" Icon="pack://siteoforigin:,,,/Resources/Icon.ico">
+
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="35" />
     </WindowChrome.WindowChrome>
-    
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto" />
@@ -23,27 +31,31 @@
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
 
-        <Grid WindowChrome.IsHitTestVisibleInChrome="True" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
-            <Image Source="" HorizontalAlignment="Left"/>
+        <Grid Background="{DynamicResource MaterialDesignDarkSeparatorBackground}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
 
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button x:Name="minimizeButton" Style="{StaticResource headerButton}" Click="minimizeButton_Click" Width="50">-</Button>
-                <Button x:Name="exitButton" Style="{StaticResource headerButton}" Click="exitButton_Click" Width="50">x</Button>
+            <StackPanel WindowChrome.IsHitTestVisibleInChrome="True" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button x:Name="minimizeButton" Click="minimizeButton_Click" Style="{DynamicResource MaterialDesignFlatButton}" Width="50">
+                    <materialDesign:PackIcon Kind="WindowMinimize"/>
+                </Button>
+                <Button x:Name="exitButton" Click="exitButton_Click" Style="{DynamicResource MaterialDesignFlatButton}" Width="50">
+                    <materialDesign:PackIcon Kind="WindowClose"/>
+                </Button>
             </StackPanel>
         </Grid>
-        
-        <ScrollViewer Grid.Column="0" Grid.Row="1">
+
+        <ScrollViewer Grid.Column="0" Grid.Row="1" MinWidth="200" MaxWidth="500">
             <ListView SelectionChanged="templatesListView_SelectionChanged" SelectionMode="Single" x:Name="templatesListView">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel>
-                            <TextBlock Text="{Binding name}" FontFamily="Consolas"/>
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="AboutCircle"/>
+                            <TextBlock Text="{Binding name}" FontFamily="Consolas" Margin="10,0,0,0"/>
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
         </ScrollViewer>
-        <Button x:Name="newTemplateButton" Click="newTemplateButton_Click" Content="New Template" FontFamily="Consolas" Grid.Column="0" Grid.Row="2" FontSize="14" MinWidth="200" MinHeight="30"></Button>
+        <Button x:Name="newTemplateButton" Click="newTemplateButton_Click" Style="{DynamicResource MaterialDesignOutlinedButton}" ToolTip="Make a new Template" Content="New Template" FontFamily="Consolas" Grid.Column="0" Grid.Row="2" FontSize="14" MinHeight="30"></Button>
 
         <ContentControl x:Name="centerControl" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2">
             <TextBlock Text="Welcome to Init!" FontSize="36" FontFamily="Consolas" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"/>

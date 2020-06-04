@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Init_Desktop.Views"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
@@ -15,16 +16,16 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0" Orientation="Horizontal">
-            <Button x:Name="deleteButton" Click="deleteButton_Click" Content="Delete Template" />
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button x:Name="deleteButton" Style="{DynamicResource MaterialDesignFlatButton}" Click="deleteButton_Click" >
+                <materialDesign:PackIcon Kind="TrashCan" Width="30" Height="30"/>
+            </Button>
         </StackPanel>
 
         <StackPanel Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Border CornerRadius="21">
-                <TextBox x:Name="nameInput" VerticalContentAlignment="Center" Height="30" SpellCheck.IsEnabled="True" BorderBrush="{x:Null}"/>
-            </Border>
-            <Button x:Name="initButton" Click="initButton_Click" Content="Init new project" Width="250" Height="50"/>
-            <Button x:Name="editTemplateButton" Click="editTemplateButton_Click" Content="Edit Template" Width="200" MinHeight="40"/>
+            <TextBox x:Name="nameInput" Style="{DynamicResource MaterialDesignOutlinedTextFieldTextBox}" materialDesign:HintAssist.Hint="Enter a name for this project" VerticalContentAlignment="Center" SpellCheck.IsEnabled="True" Margin="0,0,0,20"/>
+            <Button x:Name="initButton" Click="initButton_Click" Content="Init new project" Width="250" Height="50" Margin="0,0,0,60"/>
+            <Button x:Name="editTemplateButton" Style="{DynamicResource MaterialDesignFlatButton}" Click="editTemplateButton_Click" Content="Edit Template" Width="200" MinHeight="40"/>
         </StackPanel>
     </Grid>
 </UserControl>

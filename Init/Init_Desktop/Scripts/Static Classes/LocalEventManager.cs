@@ -13,5 +13,16 @@ namespace Init_Desktop.Scripts.Static_Classes
         {
             TemplatesChanged?.Invoke();
         }
+
+        public static event Action Loading;
+        public static void OnLoading()
+        {
+            Loading?.Invoke();
+        }
+        public static event Action DoneLoading;
+        public static void OnDoneLoading()
+        {
+            DoneLoading?.Invoke();
+        }
     }
 }

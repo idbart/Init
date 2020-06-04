@@ -123,6 +123,10 @@
   <data name="enterATemplateNameMessage" xml:space="preserve">
     <value>Please first enter a name for this template</value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icon.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="templateDoesNotExistErrorMessage" xml:space="preserve">
     <value>ERROR: Template does not exist</value>
   </data>

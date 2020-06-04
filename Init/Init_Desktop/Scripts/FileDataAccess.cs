@@ -34,7 +34,7 @@ namespace Init_Desktop.Scripts
         {
             try
             {
-                Directory.Delete(Path.Combine(ConfigurationManager.AppSettings.Get("TEMPLATES_ROOT"), name));
+                Directory.Delete(Path.Combine(ConfigurationManager.AppSettings.Get("TEMPLATES_ROOT"), name), true);
                 LocalEventManager.OnTemplatesChanged();
             }
             catch(DirectoryNotFoundException e)

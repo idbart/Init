@@ -32,12 +32,37 @@ namespace Init_Desktop
 
             refreshTemplatesList();
             LocalEventManager.TemplatesChanged += refreshTemplatesList;
+            LocalEventManager.Loading += showLoadingView;
+            LocalEventManager.DoneLoading += showBlank;
         }
 
         // retrieve templates and display them on the list view 
         private void refreshTemplatesList()
         {
             this.templatesListView.ItemsSource = model.getTemplatesList();
+        }
+
+        // show the loading screen
+        private void showLoadingView()
+        {
+            setInteractable(false);
+            centerControl.Content = new LoadingView();
+        }
+
+        // show a blank screen on center screen
+        private void showBlank()
+        {
+            setInteractable(true);
+            centerControl.Content = new Control();
+        }
+
+        // set interactibility for all ui
+        private void setInteractable(bool value)
+        {
+            newTemplateButton.IsEnabled = value;
+            templatesListView.IsEnabled = value;
+            minimizeButton.IsEnabled = value;
+            exitButton.IsEnabled = value;
         }
 
         // handle new template button
@@ -58,7 +83,7 @@ namespace Init_Desktop
             }
             else
             {
-                centerControl.Content = new Control();
+                showBlank();
             }
         }
 
